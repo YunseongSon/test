@@ -1,0 +1,19 @@
+  def set_env(self):
+        #시리얼 오픈 
+        #핸들 저장
+        self.device_handle = serial.Serial(self.device, 4800, timeout=0.01)
+        self.device_handle.flush()
+        time.sleep(0.5)
+
+    def TX_data(self, opcode):
+        self.device_handle.write(serial.to_bytes([opcode]))
+        time.sleep(0.5)
+
+    def TX_data_len(self, opcodes, len):
+        for i in range(0, len):
+            self.device_handle.write(serial.to_bytes([opcode]))
+    
+    #def find_ball(self):
+
+    def sett(self):
+        self.TX_data(250)
